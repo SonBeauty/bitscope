@@ -49,13 +49,10 @@ export default function ReferralMobile({ data, isLoading }: ReferralMobileProps)
                                 className="p-0"
                             />
                         </div>
-                    ) : data.length <= 0 ? (
+                    ) : data?.length <= 0 ? (
                         <div className="bg-[#F6FBFF] w-full h-[60vh] flex items-center mb-8 md:items-center justify-center overflow-hidden">
                             <div className="flex flex-col justify-center items-center gap-7">
                                 <NoAccessHistorySVG />
-                                <span className="font-Inter font-bold text-xl leading-[24.2px] text-[#697489]">
-                                    No Referral
-                                </span>
                             </div>
                         </div>
                     ) : (

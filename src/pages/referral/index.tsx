@@ -22,7 +22,6 @@ export default function History() {
   const { width } = useWidth();
   const [data, setData] = useState<any>(null)
   const [isLoading, setIsLoading] = useState(true)
-
   useEffect(() => {
     if (width < 1024) {
       return;
@@ -37,6 +36,7 @@ export default function History() {
   if (width < 1024) {
     return <RefferalMobile data={data} isLoading={isLoading} />;
   }
+  console.log(user?._id);
   return (
     <LayoutDashBoard className="bg-white md:p-5 py-[15px]">
       <div className="flex flex-col gap-4">
@@ -90,7 +90,7 @@ export default function History() {
                   <tbody className="w-full">
                     {
                       data?.map((item: any, index: number) => {
-                        const isLast = index === data.length - 1;
+                        const isLast = index === data?.length - 1;
                         const date = new Date(item?.userId?.createdAt)
                         const classes = isLast
                           ? ""
@@ -101,7 +101,7 @@ export default function History() {
                             key={index}
                           >
                             <td
-                              className={`${classes} py-[13px] px-[40px] h-[55px] basis-[14.5%]`}
+                              className={`${classes} py-[13px] px-[40px] h-[55px] basis-[10%]`}
                             >
                               <Typography
                                 variant="small"
@@ -112,21 +112,21 @@ export default function History() {
                               </Typography>
                             </td>
                             <td
-                              className={`${classes} flex items-center justify-start border-b text-center border-dashed py-[18px] px-[1vh] h-[55px] basis-[16%] mx-[-2.5vh]`}
+                              className={`${classes} flex items-center justify-start border-b text-center border-dashed py-[18px] px-[1vh] h-[55px] basis-[10%] mx-[-2.5vh]`}
                             >
                               <Typography className="text-[#1C1C1C] font-medium text-base leading-5 font-Inter">
                                 {item?.userId?.name}
                               </Typography>
                             </td>
                             <td
-                              className={`${classes} flex items-center justify-start border-b text-center border-dashed py-[18px] px-[22px] h-[55px] basis-[25%]`}
+                              className={`${classes} flex items-center justify-start border-b text-center border-dashed py-[18px] px-[22px] h-[55px] basis-[20%]`}
                             >
                               <Typography className="text-[#1C1C1C] font-medium text-base leading-5 font-Inter">
                                 {date?.toLocaleString()}
                               </Typography>
                             </td>
                             <td
-                              className={`${classes} flex items-center justify-start border-b text-center border-dashed py-[18px] px-[22px] h-[55px] basis-[28%]`}
+                              className={`${classes} flex items-center justify-start border-b text-center border-dashed py-[18px] px-[22px] h-[55px] basis-[25%]`}
                             >
                               <Typography className="text-[#1C1C1C] font-medium text-base leading-5 font-Inter">
                                 {item?.userId?.email}
@@ -155,9 +155,6 @@ export default function History() {
                 <div className="w-full h-[60vh] flex items-center mb-8 md:items-center justify-center overflow-hidden">
                   <div className="flex flex-col justify-center items-center gap-7">
                     <NoreferralSVG />
-                    <span className="font-Inter font-bold text-xl leading-[24.2px] text-[#697489]">
-                      No referral
-                    </span>
                   </div>
                 </div>
               )}

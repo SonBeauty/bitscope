@@ -1,22 +1,30 @@
 export const TABLE_HEAD = [
     {
-        class: "basis-[14%]",
+        class: "basis-[9.5%]",
         title: "ID",
     },
     {
-        class: "basis-[23.5%]",
-        title: "name",
-    },
-    {
-        class: "basis-[33%]",
-        title: "Time",
-    },
-    {
-        class: "basis-[30%]",
-        title: "email",
+        class: "basis-[18%]",
+        title: "Name",
     },
     {
         class: "basis-[20%]",
-        title: "action"
-    }
+        title: "Time",
+    },
+    {
+        class: "basis-[25%]",
+        title: "Email",
+    },
+    {
+        class: "basis-[25%]",
+        title: "Bonus Reward"
+    },
+    {
+        class: "basis-[25%]",
+        title: "Pre-sale Reward"
+    },
+    {
+        class: "basis-[5%]",
+        title: "Action"
+    },
 ];
