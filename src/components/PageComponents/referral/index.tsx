@@ -1,10 +1,9 @@
 import LayoutDashBoard from "@/components/layout/Layout"
 import BackLeftSVG from "@/components/svg/BackLeftSVG"
-import NoAccessHistorySVG from "@/components/svg/NoAccessHistorySVG"
+import NoreferralSVG from "@/components/svg/NoreferralSVG"
 import { Player } from "@lottiefiles/react-lottie-player"
 import { Card, CardBody, CardHeader } from "@material-tailwind/react"
 import { useRouter } from "next/router"
-import { FaUser } from 'react-icons/fa';
 
 interface ReferralMobileProps {
     data: any
@@ -24,7 +23,7 @@ export default function ReferralMobile({ data, isLoading }: ReferralMobileProps)
                     >
                         <div className="flex justify-between flex-row items-center h-full">
                             <span className="flex gap-[14px] items-center justify-center">
-                                <div onClick={() => router.push("/authentication")}>
+                                <div onClick={() => router.push("/dashboard")}>
                                     <BackLeftSVG className="w-[11px] h-[18px] mb-[0.5px]" />
                                 </div>
                                 <span className="font-Inter text-white text-lg leading-5 font-bold">
@@ -49,10 +48,10 @@ export default function ReferralMobile({ data, isLoading }: ReferralMobileProps)
                                 className="p-0"
                             />
                         </div>
-                    ) : data?.length <= 0 ? (
+                    ) : !data || data.length <= 0 ? (
                         <div className="bg-[#F6FBFF] w-full h-[60vh] flex items-center mb-8 md:items-center justify-center overflow-hidden">
                             <div className="flex flex-col justify-center items-center gap-7">
-                                <NoAccessHistorySVG />
+                                <NoreferralSVG />
                             </div>
                         </div>
                     ) : (

@@ -1,8 +1,8 @@
 import RefferalMobile from "@/components/PageComponents/referral/index";
 import LayoutDashBoard from "@/components/layout/Layout";
 import BackLeftSVG from "@/components/svg/BackLeftSVG";
-import { TABLE_HEAD } from "@/constant/components/Referral";
 import useWidth from "@/hooks/useWidth";
+import { TABLE_HEAD } from "@/constant/components/Referral";
 import { Player } from "@lottiefiles/react-lottie-player";
 import {
   Card,
@@ -29,14 +29,14 @@ export default function History() {
     fetch(`${process.env.SERVER}/users/${user?._id}/referral`)
       .then((res) => res.json())
       .then((data) => {
-        setData(data?.data?.referredUsers);
+        setData(data?.data?.data);
         setIsLoading(false);
       });
   }, [user?._id, width]);
   if (width < 1024) {
     return <RefferalMobile data={data} isLoading={isLoading} />;
   }
-  console.log(user?._id);
+  console.log(data);
   return (
     <LayoutDashBoard className="bg-white md:p-5 py-[15px]">
       <div className="flex flex-col gap-4">
@@ -49,11 +49,14 @@ export default function History() {
             <div className="flex justify-between flex-row items-center">
               <span className="flex gap-[14px] items-center justify-center px-[1rem] md:px-0">
                 <div
-                  onClick={() => router.push("/authentication")}
+                  onClick={() => router.push("/dashboard")}
                   className="md:hidden block"
                 >
                   <BackLeftSVG className="w-[11px] h-[18px] mb-[0.5px]" />
                 </div>
+                <span className="font-Inter py-[1.06rem] md:px-[1.38rem] text-white text-lg leading-5 font-bold">
+                  Referral
+                </span>
               </span>
             </div>
           </CardHeader>
@@ -119,19 +122,25 @@ export default function History() {
                               </Typography>
                             </td>
                             <td
-                              className={`${classes} flex items-center justify-start border-b text-center border-dashed py-[18px] px-[22px] h-[55px] basis-[20%]`}
+                              className={`${classes} flex items-center justify-start border-b text-center border-dashed py-[18px] px-[22px] h-[55px] basis-[22%]`}
                             >
                               <Typography className="text-[#1C1C1C] font-medium text-base leading-5 font-Inter">
                                 {date?.toLocaleString()}
                               </Typography>
                             </td>
                             <td
-                              className={`${classes} flex items-center justify-start border-b text-center border-dashed py-[18px] px-[22px] h-[55px] basis-[25%]`}
+                              className={`${classes} flex items-center justify-start border-b text-center border-dashed py-[18px] px-[22px] h-[55px] basis-[27%]`}
                             >
                               <Typography className="text-[#1C1C1C] font-medium text-base leading-5 font-Inter">
                                 {item?.userId?.email}
                               </Typography>
                             </td>
+                            <td
+                              className={`${classes} flex items-center justify-start border-b text-center border-dashed py-[18px] px-[22px] h-[55px] basis-[15%]`}
+                            ></td>
+                            <td
+                              className={`${classes} flex items-center justify-start border-b text-center border-dashed py-[18px] px-[22px] h-[55px] basis-[20%]`}
+                            ></td>
                             <td
                               className={`${classes} flex items-center justify-start py-[10px] px-[22px] h-[55px]  basis-[20%]`}
                             >
